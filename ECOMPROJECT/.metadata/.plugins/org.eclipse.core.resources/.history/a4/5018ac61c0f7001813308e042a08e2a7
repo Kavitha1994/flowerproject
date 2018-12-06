@@ -1,0 +1,102 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<style>
+body
+.form-heading { color:#fff; font-size:23px;}
+.panel h2{ color:#444444; font-size:18px; margin:0 0 8px 0;text-align:center;}
+.login-form .form-control {
+  background: #f7f7f7 none repeat scroll 0 0;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 50px;
+  line-height: 50px;
+}
+
+.main-div {
+  background: #ffffff none repeat scroll 0 0;
+  border-radius: 2px;
+  margin: 10px auto 30px;
+  max-width: 38%;
+  padding: 50px 70px 70px 71px;
+}
+
+.login-form .form-group {
+  margin-bottom:10px;
+}
+.login-form{ text-align:left;
+  font-size: 13px;
+}
+.login-form  .btn.btn-primary {
+  background: #fcc99b none repeat scroll 0 0;
+  border-color: #f0ad4e;
+  color: black;
+  font-size: 14px;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding: 0;
+}
+.botto-text {
+  color: #ffffff;
+  font-size: 14px;
+  margin: auto;
+}
+.login-form .btn.btn-primary.reset {
+  background: #fcc99b none repeat scroll 0 0;
+}
+.back { text-align: left; margin-top:10px;}
+.back a {color: #444444; font-size: 13px;text-decoration: none;}
+
+</style>
+ 
+<body id="LoginForm">
+<div class="container">
+<div class="login-form">
+<div class="main-div">
+    <div class="panel">
+   <h2><b>Product</b></h2>
+   </div> 
+   <form:form modelAttribute="product" action="add" method="post">
+   
+    <form id="Login">
+		<div class="form-group">
+
+			<label for="text"><b>Product Name</b></label>
+
+            <form:input type="text" class="form-control" id="inputProductName" placeholder="Product Name" path="productName"/>
+
+        </div>
+
+        <div class="form-group">
+
+			<label for="text"><b>Description</b></label>
+
+            <form:input type="text" class="form-control" id="inputDescription" placeholder="Description" path="productDesc"/>
+
+        </div>
+
+        <div class="form-group">
+                      <label for="CategoryName">CategoryName</label>
+			<form:select path="catid" class="form-control">                     
+			<c:forEach var="p" items="${catlist}">
+						<form:option value="${p.categoryId }">${p.categoryName}</form:option>  
+					</c:forEach></form:select>                               
+		 </div>
+             <div class="form-group">
+			<label for="price"><b>Price</b></label>
+
+            <form:input type="price" class="form-control" id="inputPrice" placeholder="Price" path="price" />
+
+        </div>
+		<div class="form-group">
+			<label for="quantity"><b>Quantity</b></label>
+
+            <form:input type="" class="form-control" id="inputQuantity" placeholder="Quantity" path="stock" />
+		</div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form></form:form>
+    </div>
+</div></div>
+
+

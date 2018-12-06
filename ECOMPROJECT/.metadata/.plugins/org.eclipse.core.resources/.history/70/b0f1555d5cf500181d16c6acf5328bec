@@ -1,0 +1,18 @@
+package com.niit.EComFront.Controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class HomeController {
+@RequestMapping("/")
+public String indexPage(Model m) {
+	m.addAttribute("sliderpage",true);
+		return "index";
+}@RequestMapping("/aboutus")
+public String aboutPage(Model m) {
+	m.addAttribute("aboutPage",true);
+		return "index";
+
+}}

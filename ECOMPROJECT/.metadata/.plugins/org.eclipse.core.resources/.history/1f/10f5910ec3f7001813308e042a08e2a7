@@ -1,0 +1,31 @@
+package com.niit.EComFront.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.niit.EComBack.dao.ProductDAO;
+
+import com.niit.EComBack.model.Product;
+
+@Controller
+public class ProductController {
+	@Autowired
+	ProductDAO productDAO;
+	@RequestMapping(value = "prodadd", method = RequestMethod.POST)
+	public String prodadd(@ModelAttribute("product")Product product) {
+		productDAO.add(product);
+		return "redirect:/product";
+	}
+	@RequestMapping("/product")
+	public String productPage(Model m) {
+		m.addAttribute("product", new Product());
+		m.addAttribute("productPage", true);
+		return "index";
+
+	}
+
+}
